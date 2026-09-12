@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://elovate.onrender.com/api';
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('elovate_token');
@@ -15,7 +15,7 @@ async function request(endpoint, options = {}) {
       headers,
     });
   } catch (error) {
-    throw new Error('Unable to connect to the backend server. Please verify the server is running on port 5000.');
+    throw new Error('Unable to connect to the backend server. Please check your network or server status.');
   }
 
   const data = await response.json().catch(() => ({}));
