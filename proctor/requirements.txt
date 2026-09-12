@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+opencv-python
+numpy
+mediapipe
+ultralytics
+insightface
+onnxruntime

@@ -1,0 +1,581 @@
+PUNJAB ROUND
+THE PROBLEM STATEMENT
+
+Mind Over Money
+OBJECTIVE
+Designed for first-time investors, this accessible platform demystifies complex
+financial jargon, charts, and metrics into easily digestible insights. By cutting through
+social media hype, it empowers young users to build genuine financial literacy and
+make confident, informed investment decisions.
+
+TEAM SIZE:
+4 members : (Product Manager , Designer , 2 Developers)
+
+FOCUS AREAS:
+1. Leverage language models to process financial documents, balance sheets and
+market terminology.
+2. Transform high-density financial APIs and traditional market charts into lowfriction, intuitive graphical interfaces.
+3. Develop algorithms that evaluate an asset's risk and match it to a user's
+profile, abstracting heavy market numbers into clear indicators.
+4. Build data-driven logic flows and recommendation engines that analyze market
+fundamentals to counter impulsive, trend-based user behavior.
+
+MINIMUM PRODUCT SCOPE :
+1.A beginner-friendly dashboard showcasing simplified asset profiles (stocks,
+funds, or crypto).
+2.A built-in feature translating complex terms and metrics into plain English.
+3.A visual risk-indicator tool showing clear safety and volatility levels for each
+asset.
+4.A simulation or guided decision-flow helping users evaluate investments
+without hype.
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+THE PROBLEM STATEMENT
+
+Campus Recruitment
+OBJECTIVE
+This transparent platform ensures integrity in online assessments and virtual
+interviews by verifying candidate skills and authentic project experience.
+Additionally, it empowers hackathon participants to validate their abilities and
+connect with ideal teammates.
+
+TEAM SIZE:
+4 members : (Product Manager , Designer , 2 Developers)
+
+FOCUS AREAS:
+1.Verify claimed technical skills and project experience through
+assessments and external technical platforms.
+2.Test a participant's technical skill stack before they are added to a
+hackathon team.
+3.Enable participants to find and form teams based on verified and
+complementary skills.
+
+MINIMUM PRODUCT SCOPE :
+1. A candidate profile system where claimed skills and experiences are
+backed by verifiable proof.
+2. An online assessment system to validate a participant's actual
+technical skills.
+3. A skill-based team discovery and formation system for hackathons.
+4. A mechanism for teams to test and verify a potential member's skills
+before adding them.
+5. A dashboard showing verified skills, assessment results, and team
+participation.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+THE PROBLEM STATEMENT
+
+Hackathon Structure and Checkpoints
+Timeframe
+
+Hour 0-3
+
+Hour 3-6
+
+Hour 6-9
+
+Hour 9-12
+
+Hour 12-14
+
+Hour 14-15
+
+Milestone
+
+Deliverables
+- Finalize tech stack, team
+roles, and project goals
+- Define user flows and
+platform architecture
+
+Kickoff & Planning
+
+Core Development Basics
+
+Core Features & Trust
+System
+
+- User registration &
+profile creation
+- Basic course creation
+flow
+
+- Course browsing &
+enrollment
+- Trust system
+(ratings/reviews)
+
+Creative Features
+
+- Begin implementing your
+creative features (optional)
+- Start personalized
+recommendations (optional)
+
+Polishing & Testing
+
+- Testing for mobile
+responsiveness
+- Finalizing UI/UX based
+on feedback
+
+Pitch Preparation &
+Demo
+
+Prepare demo for final
+presentation
+- Polish presentation and
+user demo
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+JUDGING CRITERIA
+OVERALL EVALUATION SCHEME
+The evaluation process will be split into the following main components:
+Mentorship Round (Pre-Judging) - 30% of the total score:1.Round 1(PPT & Git hub) - 10%
+2.Round 2 (Live Server) - 20%
+Judging Round (Final Evaluation) - 70% of total score
+
+MENTORSHIP ROUND EVALUATION
+Mentorship rounds will focus on guiding the teams and ensuring they're on
+the right track. Mentors will evaluate the progress based on the following
+criteria, but the final score from mentors will contribute 30% of the total
+score.
+
+Criteria
+
+Completeness of the
+Solution
+
+Technical Execution
+
+Innovation & Creativity
+
+Weight
+
+Description
+
+20%
+
+Does the platform include all
+essential features (user
+registration, course creation,
+trust systems)?
+
+20%
+
+How well is the platform built? Is
+the technology used appropriate,
+scalable, and secure?
+
+15%
+
+How unique and creative is the
+solution? Does the product stand
+out in terms of features or
+approach?
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+JUDGING CRITERIA
+MENTORSHIP ROUND EVALUATION
+
+CRITERIA
+
+Applicability & Scalability
+
+UI/UX
+
+Presentation & Demo
+
+Work distribution
+
+Bonus Features (Optional)
+
+WEIGHTAGE
+
+DESCRIPTION
+
+15%
+
+How feasible and scalable is the
+platform in real-world scenarios?
+Does it solve the problem
+effectively?
+
+10%
+
+how easy and intuitive the platform
+is to use, clean navigation, clear
+layout, no confusing steps for
+students or educators.
+
+5%
+
+How well does the team present
+their solution? Is the demo smooth,
+clear, and engaging?
+
+5%
+
+Dividing taks clearly among team
+members based on strengths, so
+everyone knows exactly what they’re
+building.
+
+10%
+
+Additional creative features that
+provide extra value (e.g., advanced
+AI, global impact, etc.).
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+JUDGING CRITERIA
+JUDGING ROUND EVALUATION
+The judging round will take place at the end of the hackathon. Judges will evaluate
+the final product and presentations based on the following criteria. The judging round
+will account for 70% of the total score, with a scorecard focusing on the quality and
+innovation of the final solution.
+
+Criteria
+
+Working & Completeness
+
+Innovation
+
+Scalability
+
+Weight
+
+Description
+
+30%
+
+Does the solution
+function as intended?
+Does it include all
+essential features
+required to solve the
+core problem
+effectively?
+
+20%
+
+How unique and creative is
+the solution? Does the
+product stand out from
+existing alternatives in
+terms of technology or
+approach?
+
+15%
+
+How well can the platform
+handle growth? Is the
+architecture capable of
+supporting increased
+users, data, and real-world
+demand?
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+JUDGING CRITERIA
+JUDGING ROUND EVALUATION
+Weight
+
+Criteria
+
+UI/UX
+
+Bonus Features (optional)
+
+Pitch
+
+Market Ready
+
+Description
+
+15%
+
+How easy and intuitive is
+the platform to use? Is
+the navigation clean, the
+layout clear, and the
+overall experience
+seamless?
+
+10%
+
+Does the project include
+additional, unexpected
+features that add significant
+value or enhance the core
+functionality?
+
+5%
+
+How effectively does the
+team communicate the
+problem, solution, and
+value proposition during the
+presentation?
+
+5%
+
+Is the solution prepared for
+real-world deployment?
+Does it demonstrate
+commercial viability and
+immediate practical
+application?
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+DO’S AND DONT’S
+DO’S OF THIS HACK
+Focus on MVP – Prioritise core features (user registration, course
+creation, basic payments).
+Collaborate effectively – Clear role assignments and communication.
+Use simple, effective tech – Stick to familiar tools and frameworks.
+Ensure trust and security – Implement basic user verification (e.g.,
+ratings, reviews).
+Test as you go – Regularly test features for functionality.
+Prepare for the pitch – Be clear and concise in your presentation.
+Stay adaptable – Adjust your plan based on feedback and challenges.
+Follow accessibility standards – Ensure a user-friendly, accessible
+and responsive interface.
+
+DONT’S OF THIS HACK
+Don't overcomplicate features – Focus on essential features only.
+Don't neglect UI/UX – Avoid confusing or complex interfaces.
+Don't ignore testing – Test features regularly, don't leave it all to the
+end.
+Don't obsess over perfection – Aim for a working solution, not
+perfection.
+Don't overuse unnecessary tech – Avoid adding complex technologies
+unless crucial.
+Don't ignore feedback – Take mentor advice seriously and adjust
+accordingly.
+Don't miss the final demo – Make sure to rehearse and demo
+smoothly.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+GENERAL RULES
+TIMEFRAME
+The hackathon lasts for 18 hours.
+Teams must submit their required products or presentation by
+the designated deadlines.
+No extensions will be granted; all teams must strictly adhere to
+the timeline
+
+PRODUCT REQUIREMENTS
+The goal is to build a working prototype showcasing the core
+features of the solution.
+The platform must be functional - it should allow judges and
+mentors to interact with your submissions.
+Features like user registration, course creation, payment
+systems must be working.
+
+MEMBER AND SUPPORT
+Teams will have first 2 rounds of mentorship feedback
+during the hackathon.
+Mentors will provide guidance, but teams are expected to
+work independently to solve problems.
+Teams should actively engage with mentors during their
+designated rounds.
+Final round will include judging from our panel.
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+GENERAL RULES
+TECHNOLOGY STACK
+You may use any technology or tools of your choice.
+While technologies like blockchain and AI can be used, they are
+optional. Only incorporate them if they add significant value to
+your solution.
+Avoid overcomplicating the tech stack; choose tools that your
+team is comfortable with and that align with your goals.
+
+CODE OF CONDUCT
+Respect and professionalism must be maintained throughout
+the hackathon.
+Any form of plagiarism, harassment, or inappropriate
+behavior will result in disqualification.
+Teams must ensure that the code and design are original, or
+if third-party resources are used, they must be properly
+credited.
+
+INTELLECTUAL PROPERTY:
+All code, designs, and assets created during the hackathon
+remain the property of the team.
+Teams are free to continue developing the project after the
+hackathon ends.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+GENERAL RULES
+
+JUDGE’S DESCISION
+The decision of the judges is final and binding.
+Any disputes or issues will be resolved by the
+hackathon organizers in a fair and transparent
+manner.
+
+FINAL PRESENTATION AND DEMO
+All teams will have the opportunity to present their
+solution at the end of the hackathon.
+Teams must demonstrate the key features of the
+platform (e.g., registration, payments, etc.).
+The presentation should clearly explain the problem,
+solution, and value proposition of the product.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+FREQUENTLY ASKED QUESTIONS
+
+Q: Can we use any technology stack?
+A: Yes, you are free to choose any technologies that
+suit your team’s expertise. Blockchain, AI, and other
+advanced technologies are optional.
+
+Q: What if we don’t have all features
+working by the deadline?
+A: Your platform must include the core features
+(registration, course creation, payments, etc.). Missing
+features will lower your score, but the platform should still
+function and demonstrate the main functionality.
+
+Q: Will the judges' decision be final?
+A: Yes, the judges' decision is final. If any disputes arise, the
+hackathon organizers will intervene to resolve them
+transparently.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+FREQUENTLY ASKED QUESTIONS
+
+Q: Can we present a prototype with
+incomplete features?
+
+A: Yes, you can present a functional prototype, even if some
+features are not yet implemented. Ensure that the working
+features are clearly demonstrated.
+
+Q: What happens if we face technical
+difficulties during the demo?
+A: If technical issues arise, your team will be given time to
+explain the situation and showcase the functional features of
+your platform. Focus on demonstrating what is working.
+
+Q: Can we continue building after the
+hackathon?
+
+A: Yes, you are free to continue developing your project after the
+event. The intellectual property (IP) belongs to your team.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+CONFLICT RESOLUTION
+
+1.Mentor Disagreements:
+Case: A team receives conflicting advice or feedback from
+mentors.
+Resolution: Teams should consider both perspectives and
+decide what fits best within their project's scope. If needed,
+organizers will intervene to provide clarity.
+
+2.Technical Issues During Demo:
+Case: A team faces technical difficulties during the final
+presentation or demo.
+Resolution: Teams will be given a few minutes to explain and
+showcase the functional aspects of their project. Judges will
+focus on what is working.
+
+3.Late Submission:
+Case: A team submits after the official deadline.
+Resolution: Late submissions will not be accepted. No
+exceptions will be made to the submission time.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+CONFLICT RESOLUTION
+
+4.Feature Discrepancies:
+Case: A team believes their submission was judged unfairly
+due to missing features.
+Resolution: Judges' decision is final. If the core features
+(registration, payment, etc.) are met, the team will be
+evaluated based on completeness and functionality.
+
+5.Code/Design Ownership Disputes:
+Case: Teams have concerns over code/design ownership or
+plagiarism allegations.
+Resolution: Teams must ensure all code and designs are
+original or properly credited. Any issues should be reported
+to organizers for investigation. Plagiarism will result in
+disqualification.
+
+6.Judging Dispute:
+Case: A team disagrees with their final score or evaluation.
+Resolution: Judges' decision is final and binding. The
+organizers will ensure the process is transparent but will
+not change results once they are announced.
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+PUNJAB ROUND
+
+CONTACT:
+ARYAN KHURANA: 8847529191
+SHIVAIN ARORA: 7696518189
+
+@GENESOC.TIET
+
+GENE Society tiet
+
+
