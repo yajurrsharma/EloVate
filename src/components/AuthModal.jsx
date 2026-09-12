@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 
-const SKILLS = [
-  'React', 'Node.js', 'Python', 'Go', 'Rust', 'TypeScript', 'PostgreSQL',
-  'MongoDB', 'AWS', 'Docker', 'Kubernetes', 'Machine Learning', 'System Design',
-  'Java', 'C++', 'Swift', 'Kotlin', 'GraphQL', 'Redis', 'Blockchain',
-];
-
 export default function AuthModal() {
   const { 
     isAuthModalOpen, 
@@ -32,6 +26,8 @@ export default function AuthModal() {
   const [title, setTitle] = useState('');
   const [bio, setBio] = useState('');
   const [company, setCompany] = useState('');
+  const [linkedinUrl, setLinkedinUrl] = useState('');       // <-- Added LinkedIn Port
+  const [certificateFile, setCertificateFile] = useState(null); // <-- Added Certificate Upload Port
 
   if (!isAuthModalOpen) return null;
 
@@ -83,6 +79,8 @@ export default function AuthModal() {
         title: title.trim(),
         bio: bio.trim(),
         company: company.trim(),
+        linkedinUrl: linkedinUrl.trim(),
+        certificateFile,
       });
     } catch (err) {
       setError(err.message || 'Registration failed. An account with this email may already exist.');
@@ -107,8 +105,8 @@ export default function AuthModal() {
           </div>
           <p className="auth-subtitle">
             {mode === 'login'
-              ? 'Sign in to your engineering profile'
-              : 'Create your engineering profile'}
+              ? 'Sign in to your profile'
+              : 'Create your profile'}
           </p>
         </div>
 
@@ -151,7 +149,7 @@ export default function AuthModal() {
 
             {mode === 'register' && (
               <div className="auth-field">
-                <label className="auth-label">I am a</label>
+                <label className="auth-label">Role</label>
                 <div className="auth-role-toggle">
                   <button
                     type="button"
@@ -190,7 +188,7 @@ export default function AuthModal() {
                 <input
                   className="auth-input"
                   type={showPw ? 'text' : 'password'}
-                  placeholder={mode === 'register' ? 'At least 6 characters' : '••••••••'}
+                  placeholder={mode === 'register' ? '6+ chars' : '••••••••'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
@@ -216,11 +214,11 @@ export default function AuthModal() {
         {step === 2 && mode === 'register' && (
           <form className="auth-form" onSubmit={submitRegister}>
             <div className="auth-field">
-              <label className="auth-label">Your Title <span className="auth-optional">(optional)</span></label>
+              <label className="auth-label">Title <span className="auth-optional">(optional)</span></label>
               <input
                 className="auth-input"
                 type="text"
-                placeholder={role === 'recruiter' ? 'e.g. Senior Talent Partner' : 'e.g. Full Stack Engineer'}
+                placeholder={role === 'recruiter' ? 'Senior Talent Partner' : 'Full Stack Engineer'}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -232,26 +230,55 @@ export default function AuthModal() {
                 <input
                   className="auth-input"
                   type="text"
-                  placeholder="e.g. Stripe, Google, YC startup"
+                  placeholder="Stripe, Google"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                 />
               </div>
             )}
 
+            {/* LinkedIn Profile URL Port */}
             <div className="auth-field">
-              <label className="auth-label">Short Bio <span className="auth-optional">(optional)</span></label>
+              <label className="auth-label">LinkedIn URL <span className="auth-optional">(optional)</span></label>
+              <input
+                className="auth-input"
+                type="url"
+                placeholder="https://linkedin.com/in/username"
+                value={linkedinUrl}
+                onChange={(e) => setLinkedinUrl(e.target.value)}
+              />
+            </div>
+
+            {/* Certificate Upload Port */}
+            <div className="auth-field">
+              <label className="auth-label">Certificate <span className="auth-optional">(optional)</span></label>
+              <div className="auth-file-upload">
+                <span className="text-xs text-slate-400 truncate">
+                  {certificateFile ? certificateFile.name : 'Upload PDF or image'}
+                </span>
+                <span className="text-xs font-semibold text-purple-400 bg-purple-500/10 px-2 py-1 rounded">Browse</span>
+                <input
+                  type="file"
+                  accept=".pdf,.png,.jpg,.jpeg"
+                  onChange={(e) => setCertificateFile(e.target.files[0])}
+                  className="auth-file-input"
+                />
+              </div>
+            </div>
+
+            <div className="auth-field">
+              <label className="auth-label">Bio <span className="auth-optional">(optional)</span></label>
               <textarea
                 className="auth-input auth-textarea"
-                placeholder="Tell the community what you're working on..."
+                placeholder="Brief intro..."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                rows={3}
+                rows={2}
               />
             </div>
 
             <p className="auth-elo-note">
-              🏆 You'll start at <strong>1,200 Elo</strong> (Novice). Complete assessments, accept interviews, and get endorsed to climb the leaderboard.
+              🏆 Starts at <strong>1,200 Elo</strong>.
             </p>
 
             <div className="auth-form-actions">
@@ -259,7 +286,7 @@ export default function AuthModal() {
                 ← Back
               </button>
               <button className="auth-submit" type="submit" disabled={loading}>
-                {loading ? <span className="auth-spinner" /> : 'Create Profile'}
+                {loading ? <span className="auth-spinner" /> : 'Complete'}
               </button>
             </div>
           </form>
