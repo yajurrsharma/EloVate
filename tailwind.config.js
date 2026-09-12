@@ -27,10 +27,10 @@ export default {
           gold: '#FFD700',
         },
         dark: {
-          bg: '#0B0F19',
-          card: 'rgba(17, 24, 39, 0.75)',
-          border: 'rgba(255, 255, 255, 0.08)',
-          hover: 'rgba(255, 255, 255, 0.04)',
+          bg: '#07080b',
+          card: 'rgba(13, 15, 23, 0.85)',
+          border: 'rgba(139, 92, 246, 0.15)',
+          hover: 'rgba(139, 92, 246, 0.06)',
         }
       },
       fontFamily: {
@@ -38,10 +38,11 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'glow-purple': '0 0 25px -5px rgba(139, 92, 246, 0.4)',
+        'glow-purple': '0 0 30px -5px rgba(139, 92, 246, 0.35)',
         'glow-gold': '0 0 25px -5px rgba(255, 215, 0, 0.4)',
         'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+        'card-hover': '0 12px 40px -10px rgba(139, 92, 246, 0.25)',
       },
       backdropBlur: {
         xs: '2px',
