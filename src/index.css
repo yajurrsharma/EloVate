@@ -15,13 +15,14 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Sleek Minimal Glass Panels & Cards */
+/* Ultra-Refined Minimal Glass Panels with Fluid Hover Physics */
 .glass-panel {
   background: rgba(13, 15, 23, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(139, 92, 246, 0.15);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel-interactive {
@@ -29,31 +30,32 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(139, 92, 246, 0.15);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, border-color, box-shadow;
 }
 
 .glass-panel-interactive:hover {
-  background: rgba(17, 21, 33, 0.95);
-  border-color: rgba(139, 92, 246, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px -10px rgba(139, 92, 246, 0.25);
+  background: rgba(18, 22, 35, 0.95);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.25);
 }
 
 .glass-input {
   background: #030712;
   border: 1px solid rgba(139, 92, 246, 0.2);
   color: #f8fafc;
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-input:focus {
   outline: none;
   border-color: #8b5cf6;
-  background: #0d0f17;
-  box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.3);
+  background: #07080b;
+  box-shadow: 0 0 20px -3px rgba(139, 92, 246, 0.35);
 }
 
-/* Professional Monochromatic & Tier Badges */
+/* Professional Tier Badges */
 .badge-gold {
   background: rgba(255, 215, 0, 0.1);
   border: 1px solid rgba(255, 215, 0, 0.3);
@@ -73,7 +75,7 @@ body {
   color: #d97706;
 }
 
-/* Clean Minimal Scrollbar with Purple Accent */
+/* Clean Minimal Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -92,7 +94,7 @@ body {
   background: #7c3aed;
 }
 
-/* ─── Auth Modal & Global Buttons (Minimalist Purple-Black Theme) ──────────────── */
+/* ─── Auth Modal & Global Elements (Minimalist Purple-Black Theme) ──────────────── */
 .auth-overlay {
   position: fixed;
   inset: 0;
@@ -114,24 +116,26 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.25);
   border-radius: 16px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 30px -5px rgba(139, 92, 246, 0.2);
-  padding: 28px;
+  padding: 24px;
   color: #f8fafc;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .auth-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .auth-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .auth-logo-text {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.03em;
   background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
@@ -140,7 +144,7 @@ body {
 }
 
 .auth-subtitle {
-  font-size: 13px;
+  font-size: 12px;
   color: #94a3b8;
   margin: 0;
 }
@@ -152,13 +156,13 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 10px;
   padding: 3px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .auth-tab {
   font-size: 13px;
   font-weight: 500;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
   border: none;
   background: transparent;
@@ -178,12 +182,12 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .auth-step-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 9999px;
   background: #1e293b;
   transition: all 0.2s ease;
@@ -195,7 +199,7 @@ body {
 }
 
 .auth-step-line {
-  width: 32px;
+  width: 24px;
   height: 2px;
   background: #1e293b;
 }
@@ -204,34 +208,33 @@ body {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #fca5a5;
-  font-size: 13px;
-  padding: 10px 14px;
+  font-size: 12px;
+  padding: 8px 12px;
   border-radius: 8px;
-  margin-bottom: 16px;
-  line-height: 1.4;
+  margin-bottom: 12px;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .auth-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .auth-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: #cbd5e1;
   letter-spacing: 0.01em;
 }
 
 .auth-optional {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 400;
   color: #64748b;
   margin-left: 4px;
@@ -241,9 +244,9 @@ body {
   background: #030712;
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   color: #f8fafc;
-  font-size: 14px;
+  font-size: 13px;
   font-family: inherit;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
@@ -261,6 +264,32 @@ body {
   color: #475569;
 }
 
+/* File Upload Port Style */
+.auth-file-upload {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #030712;
+  border: 1px dashed rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-file-upload:hover {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.auth-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .auth-pw-wrap {
   position: relative;
   display: flex;
@@ -269,20 +298,18 @@ body {
 }
 
 .auth-pw-wrap .auth-input {
-  padding-right: 40px;
+  padding-right: 36px;
 }
 
 .auth-pw-toggle {
   position: absolute;
-  right: 10px;
+  right: 8px;
   background: none;
   border: none;
   color: #64748b;
   cursor: pointer;
-  font-size: 15px;
-  padding: 4px 6px;
-  border-radius: 4px;
-  line-height: 1;
+  font-size: 14px;
+  padding: 4px;
 }
 
 .auth-pw-toggle:hover {
@@ -299,13 +326,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px;
+  gap: 6px;
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid rgba(139, 92, 246, 0.2);
   background: #030712;
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -324,13 +351,13 @@ body {
   box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.25);
 }
 
-/* Smooth Interactive Button Physics */
+/* Fluid Hover Physics */
 button, .auth-submit, .auth-demo-btn, .auth-back {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button:hover, .auth-submit:hover:not(:disabled), .auth-demo-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
@@ -340,16 +367,16 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 .auth-submit {
   background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
   color: #ffffff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 11px 16px;
+  padding: 10px 16px;
   border-radius: 8px;
   border: 1px solid rgba(167, 139, 250, 0.3);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: 2px;
   box-shadow: 0 4px 20px -2px rgba(139, 92, 246, 0.4);
 }
 
@@ -367,17 +394,17 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 
 .auth-form-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 8px;
+  margin-top: 2px;
 }
 
 .auth-back {
   background: transparent;
   border: 1px solid rgba(139, 92, 246, 0.2);
   color: #94a3b8;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -394,14 +421,14 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 }
 
 .auth-elo-note {
-  font-size: 12px;
+  font-size: 11px;
   color: #94a3b8;
   background: #030712;
   border: 1px solid rgba(139, 92, 246, 0.2);
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .auth-elo-note strong {
@@ -410,13 +437,13 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 
 .auth-textarea {
   resize: vertical;
-  min-height: 70px;
+  min-height: 50px;
 }
 
 .auth-spinner {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   border-top-color: #ffffff;
@@ -430,7 +457,7 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 .auth-divider {
   position: relative;
   text-align: center;
-  margin: 20px 0 14px;
+  margin: 14px 0 10px;
 }
 
 .auth-divider::before {
@@ -446,8 +473,8 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 .auth-divider span {
   position: relative;
   background: #0d1523;
-  padding: 0 12px;
-  font-size: 11px;
+  padding: 0 8px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: #94a3b8;
@@ -457,15 +484,15 @@ button:active, .auth-submit:active:not(:disabled), .auth-demo-btn:active {
 .auth-demo-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 .auth-demo-btn {
   background: #030712;
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 8px;
-  padding: 9px 12px;
-  font-size: 12px;
+  padding: 8px 10px;
+  font-size: 11px;
   font-weight: 500;
   color: #cbd5e1;
   cursor: pointer;
