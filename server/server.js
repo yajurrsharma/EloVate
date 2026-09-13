@@ -22,7 +22,7 @@ pool.on('error', (err) => console.error('[db] Unexpected client error', err));
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: '*', // Open configuration to prevent local browser CORS blocks
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -58,7 +58,7 @@ function generateUserId(name) {
 // POST /api/auth/register
 app.post('/api/auth/register', async (req, res) => {
   try {
-    const { fullName, email, password, role, title, bio, company } = req.body;
+    const { fullName, email, password, role, title, bio, company, linkedinUrl, certificateName } = req.body;
 
     if (!fullName || !email || !password || !role) {
       return res.status(400).json({ error: 'Full name, email, password, and role are required.' });
@@ -67,7 +67,6 @@ app.post('/api/auth/register', async (req, res) => {
       return res.status(400).json({ error: 'Password must be at least 6 characters.' });
     }
 
-    // Check email uniqueness using parameterized query (Safe from SQL Injection)
     const existing = await pool.query('SELECT id FROM users WHERE email = $1', [email.toLowerCase().trim()]);
     if (existing.rows.length > 0) {
       return res.status(409).json({ error: 'An account with this email already exists.' });
@@ -79,10 +78,24 @@ app.post('/api/auth/register', async (req, res) => {
     const eloTier = 'Novice';
 
     const result = await pool.query(
-      `INSERT INTO users (id, full_name, email, password_hash, role, title, bio, company, elo_rating, elo_tier, is_mentor)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-       RETURNING id, full_name, email, role, title, bio, company, elo_rating, elo_tier, is_mentor, created_at`,
-      [userId, fullName.trim(), email.toLowerCase().trim(), passwordHash, role.toLowerCase(), title || (role.toLowerCase() === 'recruiter' ? 'Talent Partner' : 'Software Engineer'), bio || '', company || null, startElo, eloTier, false]
+      `INSERT INTO users (id, full_name, email, password_hash, role, title, bio, company, linkedin_url, certificate_name, elo_rating, elo_tier, is_mentor)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+       RETURNING id, full_name, email, role, title, bio, company, linkedin_url, certificate_name, elo_rating, elo_tier, is_mentor, created_at`,
+      [
+        userId, 
+        fullName.trim(), 
+        email.toLowerCase().trim(), 
+        passwordHash, 
+        role.toLowerCase(), 
+        title || (role.toLowerCase() === 'recruiter' ? 'Talent Partner' : 'Software Engineer'), 
+        bio || '', 
+        company || null, 
+        linkedinUrl || null, 
+        certificateName || null, 
+        startElo, 
+        eloTier, 
+        false
+      ]
     );
 
     const user = result.rows[0];
@@ -98,6 +111,8 @@ app.post('/api/auth/register', async (req, res) => {
         title: user.title,
         bio: user.bio,
         company: user.company,
+        linkedinUrl: user.linkedin_url,
+        certificateName: user.certificate_name,
         eloRating: user.elo_rating,
         eloTier: user.elo_tier,
         isMentor: user.is_mentor,
@@ -120,7 +135,6 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required.' });
     }
 
-    // Secure parameterized query preventing SQL Injection
     const result = await pool.query(
       `SELECT * FROM users WHERE email = $1`,
       [email.toLowerCase().trim()]
@@ -148,6 +162,8 @@ app.post('/api/auth/login', async (req, res) => {
         title: user.title,
         bio: user.bio,
         company: user.company,
+        linkedinUrl: user.linkedin_url,
+        certificateName: user.certificate_name,
         eloRating: user.elo_rating,
         eloTier: user.elo_tier,
         isMentor: user.is_mentor,
@@ -172,7 +188,7 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
     const u = result.rows[0];
     return res.json({
       id: u.id, fullName: u.full_name, email: u.email, role: u.role,
-      title: u.title, bio: u.bio, company: u.company,
+      title: u.title, bio: u.bio, company: u.company, linkedinUrl: u.linkedin_url, certificateName: u.certificate_name,
       eloRating: u.elo_rating, eloTier: u.elo_tier,
       isMentor: u.is_mentor, mentorBio: u.mentor_bio, mentorSkills: u.mentor_skills || [],
       verifiedBadges: [], githubAudits: [], endorsements: [],
