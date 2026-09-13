@@ -66,10 +66,10 @@ export default function App() {
   // Show landing/auth state when not authenticated
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0B0F19] text-slate-100 flex flex-col">
+      <div className="min-h-screen bg-[#07080b] text-slate-100 flex flex-col">
         <Navbar />
         <main className="flex-1 flex items-center justify-center p-6">
-          <div className="max-w-md w-full glass-panel p-8 rounded-3xl border border-white/10 text-center space-y-6">
+          <div className="max-w-md w-full glass-panel p-8 rounded-3xl border border-purple-500/20 text-center space-y-6">
             <h1 className="text-3xl font-extrabold text-white tracking-tight">EloVate</h1>
             <p className="text-sm text-slate-400">
               Eliminate resume fabrications. Prove your engineering depth with a competitive Chess-style Elo rating system.
@@ -83,7 +83,7 @@ export default function App() {
               </button>
               <button 
                 onClick={() => { setAuthModalTab('signup'); setIsAuthModalOpen(true); }}
-                className="px-5 py-2.5 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] text-white text-xs font-bold transition-all shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-lg"
               >
                 Create Account
               </button>
@@ -136,7 +136,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0B0F19] text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#07080b] text-slate-100">
       {/* Sticky Top Navbar */}
       <Navbar />
 
@@ -177,7 +177,7 @@ export default function App() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
             
             {/* Candidate Header Profile Card */}
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gradient-to-b from-purple-950/10 to-slate-900/60">
+            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-purple-500/20 flex flex-col sm:flex-row items-center justify-between gap-6 bg-gradient-to-b from-purple-950/10 to-slate-900/60">
               <div className="flex items-center gap-5">
                 <UserAvatar 
                   name={currentUser.fullName} 
@@ -194,6 +194,11 @@ export default function App() {
                   </div>
                   <p className="text-sm text-slate-400">{currentUser.title}</p>
                   <p className="text-xs text-slate-500 mt-1 max-w-md">{currentUser.bio}</p>
+                  {currentUser.linkedinUrl && (
+                    <a href={currentUser.linkedinUrl} target="_blank" rel="noreferrer" className="text-xs text-purple-400 hover:underline mt-1 inline-block">
+                      LinkedIn Profile ↗
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -280,7 +285,7 @@ export default function App() {
 
                       {interview.notes && (
                         <p className="text-[11px] text-slate-400 italic leading-relaxed border-l-2 border-purple-500/30 pl-3">
-                          "{interview.notes}"
+                          &ldquo;{interview.notes}&rdquo;
                         </p>
                       )}
 
@@ -433,7 +438,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Peer Endorsements Box */}
-              <div className="glass-panel p-6 rounded-3xl border border-white/10 space-y-4">
+              <div className="glass-panel p-6 rounded-3xl border border-purple-500/20 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-base font-bold text-white flex items-center gap-2">
                     <HeartHandshake className="w-4 h-4 text-purple-400" />
@@ -492,7 +497,7 @@ export default function App() {
               </div>
 
               {/* External References & LORs Box */}
-              <div className="glass-panel p-6 rounded-3xl border border-white/10 space-y-4">
+              <div className="glass-panel p-6 rounded-3xl border border-purple-500/20 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-base font-bold text-white flex items-center gap-2">
                     <FileText className="w-4 h-4 text-emerald-400" />
@@ -537,7 +542,7 @@ export default function App() {
       {/* External Reference Submission Modal */}
       {isReferenceModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="max-w-md w-full glass-panel border border-emerald-500/40 p-6 sm:p-8 rounded-3xl space-y-5 animate-fadeIn">
+          <div className="max-w-md w-full glass-panel border border-emerald-500/40 p-6 sm:p-8 rounded-3xl space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div>
                 <h3 className="text-lg font-bold text-white">
