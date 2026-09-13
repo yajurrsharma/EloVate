@@ -81,23 +81,38 @@ export function AppProvider({ children }) {
     showToast(`Welcome back, ${resolvedName}!`, 'success');
   };
 
-  const registerUser = async (formData) => {
-    const data = await api.auth.register(formData);
+  const registerUser = async (formDataObj) => {
+    const dataToSend = new FormData();
+    dataToSend.append('fullName', formDataObj.fullName || '');
+    dataToSend.append('email', formDataObj.email || '');
+    dataToSend.append('password', formDataObj.password || '');
+    dataToSend.append('role', formDataObj.role || 'candidate');
+    dataToSend.append('title', formDataObj.title || '');
+    dataToSend.append('bio', formDataObj.bio || '');
+    dataToSend.append('company', formDataObj.company || '');
+    dataToSend.append('linkedinUrl', formDataObj.linkedinUrl || '');
+    
+    if (formDataObj.certificateFile) {
+      dataToSend.append('certificate', formDataObj.certificateFile);
+    }
+
+    const data = await api.auth.register(dataToSend);
     localStorage.setItem('elovate_token', data.token);
 
-    const resolvedName = formData.fullName || formData.full_name || formData.email.split('@')[0];
-    const resolvedRole = (formData.role || 'candidate').toLowerCase();
+    const resolvedName = formDataObj.fullName || formDataObj.full_name || formDataObj.email.split('@')[0];
+    const resolvedRole = (formDataObj.role || 'candidate').toLowerCase();
 
     const frontendUser = {
       id: data.user.id,
       fullName: resolvedName,
-      email: formData.email,
+      email: formDataObj.email,
       role: resolvedRole,
       eloRating: 1200,
       eloTier: 'Novice',
       verifiedBadges: [],
       githubAudits: [],
       avatar: null,
+      linkedinUrl: formDataObj.linkedinUrl || '',
     };
 
     loginAsUser(frontendUser);
