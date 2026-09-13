@@ -82,28 +82,26 @@ export function AppProvider({ children }) {
   };
 
   const registerUser = async (formDataObj) => {
-    const dataToSend = new FormData();
-    dataToSend.append('fullName', formDataObj.fullName || '');
-    dataToSend.append('email', formDataObj.email || '');
-    dataToSend.append('password', formDataObj.password || '');
-    dataToSend.append('role', formDataObj.role || 'candidate');
-    dataToSend.append('title', formDataObj.title || '');
-    dataToSend.append('bio', formDataObj.bio || '');
-    dataToSend.append('company', formDataObj.company || '');
-    dataToSend.append('linkedinUrl', formDataObj.linkedinUrl || '');
-    
-    if (formDataObj.certificateFile) {
-      dataToSend.append('certificate', formDataObj.certificateFile);
-    }
+    const payload = {
+      fullName: formDataObj.fullName || '',
+      email: formDataObj.email || '',
+      password: formDataObj.password || '',
+      role: formDataObj.role || 'candidate',
+      title: formDataObj.title || '',
+      bio: formDataObj.bio || '',
+      company: formDataObj.company || '',
+      linkedinUrl: formDataObj.linkedinUrl || '',
+      certificateName: formDataObj.certificateFile ? formDataObj.certificateFile.name : '',
+    };
 
-    const data = await api.auth.register(dataToSend);
+    const data = await api.auth.register(payload);
     localStorage.setItem('elovate_token', data.token);
 
     const resolvedName = formDataObj.fullName || formDataObj.full_name || formDataObj.email.split('@')[0];
     const resolvedRole = (formDataObj.role || 'candidate').toLowerCase();
 
     const frontendUser = {
-      id: data.user.id,
+      id: data.user?.id || 'user-' + Date.now(),
       fullName: resolvedName,
       email: formDataObj.email,
       role: resolvedRole,
@@ -113,6 +111,7 @@ export function AppProvider({ children }) {
       githubAudits: [],
       avatar: null,
       linkedinUrl: formDataObj.linkedinUrl || '',
+      certificateName: formDataObj.certificateFile ? formDataObj.certificateFile.name : '',
     };
 
     loginAsUser(frontendUser);
