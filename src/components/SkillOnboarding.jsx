@@ -46,7 +46,7 @@ export default function SkillOnboarding() {
               </h1>
 
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-                Eliminate resume fabrications and unverified teammates. EloVate introduces a competitive <strong>Chess-Style Elo Rating System</strong> for developers — measuring real skill through anti-cheat assessments, GitHub commit auditing, and complementary team matchmaking.
+                Eliminate resume fabrications and unverified teammates. EloVate introduces a <strong>Elo Rating System</strong> for developers, measuring real skill through anti-cheat assessments, GitHub commit auditing, and complementary team matchmaking.
               </p>
             </div>
 
