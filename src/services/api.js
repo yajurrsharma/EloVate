@@ -2,8 +2,12 @@ const API_BASE_URL = 'https://elovate.onrender.com/api';
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('elovate_token');
+  
+  // Check if the body is FormData so we don't force application/json
+  const isFormData = options.body instanceof FormData;
+
   const headers = {
-    'Content-Type': 'application/json',
+    ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...options.headers,
   };
@@ -31,7 +35,7 @@ export const api = {
   auth: {
     register: (userData) => request('/auth/register', {
       method: 'POST',
-      body: JSON.stringify(userData),
+      body: userData,
     }),
     login: (email, password) => request('/auth/login', {
       method: 'POST',
