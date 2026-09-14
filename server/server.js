@@ -233,6 +233,70 @@ app.get('/api/users', async (req, res) => {
 });
 
 // =============================================================================
+// MENTORSHIP & INTERVIEW ROUTES
+// =============================================================================
+
+// GET /api/mentorship - Fetch mentorship sessions
+app.get('/api/mentorship', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM mentorship_sessions ORDER BY created_at DESC');
+    return res.json(result.rows);
+  } catch (err) {
+    console.error('[getMentorship]', err);
+    return res.status(500).json({ error: 'Failed to fetch mentorship sessions.' });
+  }
+});
+
+// POST /api/mentorship - Request a mentorship session
+app.post('/api/mentorship', requireAuth, async (req, res) => {
+  try {
+    const { mentorId, topic, notes, date } = req.body;
+    const sessionId = 'mentor-' + Date.now().toString(36);
+    
+    const result = await pool.query(
+      `INSERT INTO mentorship_sessions (id, candidate_id, mentor_id, topic, notes, session_date, status)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [sessionId, req.userId, mentorId, topic, notes, date, 'pending']
+    );
+    return res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error('[createMentorship]', err);
+    return res.status(500).json({ error: 'Failed to create mentorship request.' });
+  }
+});
+
+// GET /api/interviews - Fetch interview requests
+app.get('/api/interviews', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM interviews ORDER BY created_at DESC');
+    return res.json(result.rows);
+  } catch (err) {
+    console.error('[getInterviews]', err);
+    return res.status(500).json({ error: 'Failed to fetch interviews.' });
+  }
+});
+
+// POST /api/interviews - Schedule an interview
+app.post('/api/interviews', requireAuth, async (req, res) => {
+  try {
+    const { candidateId, roleTitle, date, notes } = req.body;
+    const interviewId = 'interview-' + Date.now().toString(36);
+
+    const result = await pool.query(
+      `INSERT INTO interviews (id, recruiter_id, candidate_id, role_title, interview_date, notes, status)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [interviewId, req.userId, candidateId, roleTitle, date, notes, 'scheduled']
+    );
+    return res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error('[createInterview]', err);
+    return res.status(500).json({ error: 'Failed to schedule interview.' });
+  }
+});
+
+// =============================================================================
 // HEALTH CHECK
 // =============================================================================
 app.get('/api/health', async (req, res) => {
