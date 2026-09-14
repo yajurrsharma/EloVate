@@ -200,6 +200,39 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
 });
 
 // =============================================================================
+// USER ROUTES
+// =============================================================================
+
+// GET /api/users - Fetch all users from the database
+app.get('/api/users', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+        id, 
+        full_name AS "fullName", 
+        email, 
+        role, 
+        title, 
+        bio, 
+        company, 
+        linkedin_url AS "linkedinUrl", 
+        certificate_name AS "certificateName",
+        elo_rating AS "eloRating", 
+        elo_tier AS "eloTier", 
+        is_mentor AS "isMentor",
+        mentor_bio AS "mentorBio",
+        mentor_skills AS "mentorSkills"
+      FROM users 
+      ORDER BY created_at DESC
+    `);
+    return res.json(result.rows);
+  } catch (err) {
+    console.error('[getUsers]', err);
+    return res.status(500).json({ error: 'Failed to fetch users from database.' });
+  }
+});
+
+// =============================================================================
 // HEALTH CHECK
 // =============================================================================
 app.get('/api/health', async (req, res) => {
