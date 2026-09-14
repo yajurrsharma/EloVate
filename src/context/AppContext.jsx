@@ -28,6 +28,21 @@ export function AppProvider({ children }) {
     }
   });
 
+  // Fetch all users from the backend database on mount
+  useEffect(() => {
+    async function fetchBackendUsers() {
+      try {
+        const dbUsers = await api.users.getAll();
+        if (Array.isArray(dbUsers) && dbUsers.length > 0) {
+          setUsers(dbUsers);
+        }
+      } catch (err) {
+        console.error('Failed to fetch users from backend, falling back to local/seed state', err);
+      }
+    }
+    fetchBackendUsers();
+  }, []);
+
   const [currentUserId, setCurrentUserId] = useState(() => {
     try {
       return localStorage.getItem(STORAGE_KEY + '_user_id') || 'user-harshika';
@@ -69,9 +84,14 @@ export function AppProvider({ children }) {
       fullName: resolvedName,
       email: email,
       role: resolvedRole,
-      eloRating: data.user.elo_rating || 1200,
-      eloTier: 'Candidate',
-      verifiedBadges: data.user.verified_badges || [],
+      title: data.user.title || '',
+      bio: data.user.bio || '',
+      company: data.user.company || '',
+      linkedinUrl: data.user.linkedinUrl || data.user.linkedin_url || '',
+      certificateName: data.user.certificateName || data.user.certificate_name || '',
+      eloRating: data.user.eloRating || data.user.elo_rating || 1200,
+      eloTier: data.user.eloTier || data.user.elo_tier || 'Candidate',
+      verifiedBadges: data.user.verifiedBadges || data.user.verified_badges || [],
       githubAudits: [],
       avatar: null,
     };
@@ -105,6 +125,9 @@ export function AppProvider({ children }) {
       fullName: resolvedName,
       email: formDataObj.email,
       role: resolvedRole,
+      title: formDataObj.title || '',
+      bio: formDataObj.bio || '',
+      company: formDataObj.company || '',
       eloRating: 1200,
       eloTier: 'Novice',
       verifiedBadges: [],
