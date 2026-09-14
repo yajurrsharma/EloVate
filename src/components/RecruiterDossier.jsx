@@ -49,32 +49,34 @@ export default function RecruiterDossier() {
   const [intNotes, setIntNotes] = useState('');
 
   // Filter candidates (only show candidate role users)
-  const candidateList = users.filter(u => u.role === 'candidate');
+  const candidateList = (users || []).filter(u => u.role === 'candidate');
 
   const filteredCandidates = candidateList.filter(candidate => {
+    const verifiedBadges = candidate.verifiedBadges || [];
+
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const matchesName = candidate.fullName.toLowerCase().includes(q);
       const matchesTitle = (candidate.title || '').toLowerCase().includes(q);
-      const matchesSkill = (candidate.verifiedBadges || []).some(b => b.skillName.toLowerCase().includes(q));
+      const matchesSkill = verifiedBadges.some(b => (b.skillName || '').toLowerCase().includes(q));
       if (!matchesName && !matchesTitle && !matchesSkill) return false;
     }
 
     if (selectedTierFilter !== 'all') {
-      if (candidate.eloTier.toLowerCase() !== selectedTierFilter.toLowerCase()) return false;
+      if ((candidate.eloTier || '').toLowerCase() !== selectedTierFilter.toLowerCase()) return false;
     }
 
     if (selectedSkillFilter !== 'all') {
-      const hasSkill = (candidate.verifiedBadges || []).some(b => b.skillId === selectedSkillFilter);
+      const hasSkill = verifiedBadges.some(b => b.skillId === selectedSkillFilter);
       if (!hasSkill) return false;
     }
 
-    if (candidate.verifiedBadges.length > 0) {
-      const avgIntegrity = candidate.verifiedBadges.reduce((a, b) => a + (b.integrityScore || 100), 0) / candidate.verifiedBadges.length;
+    if (verifiedBadges.length > 0) {
+      const avgIntegrity = verifiedBadges.reduce((a, b) => a + (b.integrityScore || 100), 0) / verifiedBadges.length;
       if (avgIntegrity < minIntegrity) return false;
     }
 
-    if (onlyShortlisted && !shortlistedCandidates.includes(candidate.id)) {
+    if (onlyShortlisted && !(shortlistedCandidates || []).includes(candidate.id)) {
       return false;
     }
 
@@ -136,7 +138,7 @@ export default function RecruiterDossier() {
           <div>
             <div className="text-[10px] uppercase font-bold text-slate-400">Shortlisted for Interview</div>
             <div className="text-xl font-extrabold font-mono text-white">
-              {shortlistedCandidates.length} <span className="text-xs font-normal text-slate-400">Candidates</span>
+              {(shortlistedCandidates || []).length} <span className="text-xs font-normal text-slate-400">Candidates</span>
             </div>
           </div>
         </div>
@@ -211,7 +213,7 @@ export default function RecruiterDossier() {
             }`}
           >
             <Bookmark className="w-3.5 h-3.5" />
-            <span>Show Shortlisted Only ({shortlistedCandidates.length})</span>
+            <span>Show Shortlisted Only ({(shortlistedCandidates || []).length})</span>
           </button>
         </div>
       </div>
@@ -225,8 +227,10 @@ export default function RecruiterDossier() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCandidates.map(candidate => {
-            const isShortlisted = shortlistedCandidates.includes(candidate.id);
-            const candidateRefs = references.filter(r => r.candidateId === candidate.id);
+            const isShortlisted = (shortlistedCandidates || []).includes(candidate.id);
+            const candidateRefs = (references || []).filter(r => r.candidateId === candidate.id);
+            const verifiedBadges = candidate.verifiedBadges || [];
+            const githubAudits = candidate.githubAudits || [];
 
             return (
               <div 
@@ -285,7 +289,7 @@ export default function RecruiterDossier() {
                       Proctored Assessments
                     </div>
                     <div className="flex flex-wrap gap-1.5">
-                      {candidate.verifiedBadges.length > 0 ? candidate.verifiedBadges.map((b, idx) => (
+                      {verifiedBadges.length > 0 ? verifiedBadges.map((b, idx) => (
                         <span 
                           key={idx}
                           className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase ${
@@ -294,7 +298,7 @@ export default function RecruiterDossier() {
                           }`}
                           title={`Score: ${b.score}% • Anti-Cheat: ${b.integrityScore}%`}
                         >
-                          {b.skillName.split(' ')[0]} ({b.tier.toUpperCase()})
+                          {(b.skillName || '').split(' ')[0]} ({b.tier.toUpperCase()})
                         </span>
                       )) : (
                         <span className="text-[10px] text-slate-500 italic">No assessments yet</span>
@@ -303,13 +307,13 @@ export default function RecruiterDossier() {
                   </div>
 
                   {/* GitHub Repos */}
-                  {(candidate.githubAudits || []).length > 0 && (
+                  {githubAudits.length > 0 && (
                     <div>
                       <div className="text-[10px] uppercase font-bold text-slate-500 mb-1">
                         Audited GitHub Repos
                       </div>
                       <div className="space-y-1">
-                        {(candidate.githubAudits || []).map((repo, idx) => (
+                        {githubAudits.map((repo, idx) => (
                           <div key={idx} className="flex items-center justify-between text-[11px] text-slate-300">
                             <span className="truncate max-w-[140px] text-blue-300 font-mono">{repo.repoName}</span>
                             <span className="text-slate-500 font-mono text-[10px]">{repo.commits} commits</span>
@@ -405,9 +409,9 @@ export default function RecruiterDossier() {
                 <span>Proctored Assessment Telemetry Log</span>
               </h4>
 
-              {inspectedCandidate.verifiedBadges.length > 0 ? (
+              {(inspectedCandidate.verifiedBadges || []).length > 0 ? (
                 <div className="space-y-2">
-                  {inspectedCandidate.verifiedBadges.map((badge, idx) => (
+                  {(inspectedCandidate.verifiedBadges || []).map((badge, idx) => (
                     <div key={idx} className="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between text-xs">
                       <div>
                         <div className="font-bold text-slate-200">{badge.skillName}</div>
@@ -474,8 +478,8 @@ export default function RecruiterDossier() {
                 <span>Verified Supervisor References & LORs</span>
               </h4>
 
-              {references.filter(r => r.candidateId === inspectedCandidate.id).length > 0 ? (
-                references.filter(r => r.candidateId === inspectedCandidate.id).map(ref => (
+              {(references || []).filter(r => r.candidateId === inspectedCandidate.id).length > 0 ? (
+                (references || []).filter(r => r.candidateId === inspectedCandidate.id).map(ref => (
                   <div key={ref.id} className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20 space-y-2 text-xs">
                     <div className="flex items-center justify-between gap-2">
                       <div>
@@ -499,13 +503,13 @@ export default function RecruiterDossier() {
               <button
                 onClick={() => toggleShortlistCandidate(inspectedCandidate.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  shortlistedCandidates.includes(inspectedCandidate.id)
+                  (shortlistedCandidates || []).includes(inspectedCandidate.id)
                     ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                     : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/10'
                 }`}
               >
                 <Bookmark className="w-3.5 h-3.5" />
-                <span>{shortlistedCandidates.includes(inspectedCandidate.id) ? 'Shortlisted ✓' : 'Add to Shortlist'}</span>
+                <span>{(shortlistedCandidates || []).includes(inspectedCandidate.id) ? 'Shortlisted ✓' : 'Add to Shortlist'}</span>
               </button>
 
               <button
